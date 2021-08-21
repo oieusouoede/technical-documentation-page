@@ -1,0 +1,157 @@
+html {
+  font-size: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 15px;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 290px;
+  color: black;
+  background-color: #ffffff;
+  font-family: 'Open Sans', Arial, sans-serif;
+  line-height: 1.5;
+}
+
+header {
+  color: black;
+  margin: 1rem;
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+#navbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 250px;
+  height: 100%;
+  -webkit-box-shadow: 2px 3px 7px 1px rgba(0, 0, 0, 0.7);
+          box-shadow: 2px 3px 7px 1px rgba(0, 0, 0, 0.7);
+}
+
+#navbar header {
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+
+#navbar ul {
+  height: 85%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+#navbar li {
+  color: #404040;
+  position: relative;
+  list-style: none;
+  width: 100%;
+  text-align: center;
+}
+
+#navbar a {
+  display: block;
+  padding: 0.8rem;
+  text-decoration: none;
+  color: #404040;
+  cursor: pointer;
+}
+
+#navbar li a:hover {
+  color: white;
+  background-color: black;
+  font-weight: 600;
+  -webkit-transition: background-color 100ms ease-in-out, color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out, color 100ms ease-in-out;
+}
+
+#main-doc {
+  position: absolute;
+  margin-left: 260px;
+  padding: 2rem 5rem;
+}
+
+#main-doc header {
+  margin-top: 3rem;
+}
+
+article {
+  color: #383838;
+  font-size: 1.025rem;
+  text-align: justify;
+  margin: 1rem;
+}
+
+h2 {
+  color: black;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+section li {
+  margin: 1rem 10rem 0 1.2rem;
+}
+
+code {
+  display: block;
+  position: relative;
+  text-align: left;
+  word-break: normal;
+  word-wrap: normal;
+  white-space: pre-line;
+  line-height: 2;
+  padding: 1rem;
+  margin: 2rem;
+  background-color: black;
+  color: #33ff00;
+  border-radius: 0.3rem;
+}
+
+.bash-stuff {
+  font-weight: 600;
+  color: #b83db1;
+}
+
+@media only screen and (max-width: 768px) {
+  #navbar {
+    position: absolute;
+    width: 100%;
+    height: 280px;
+  }
+  #navbar ul {
+    height: 75%;
+  }
+  #main-doc {
+    position: relative;
+    margin-left: 0px;
+    margin-top: 280px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #main-doc {
+    padding: 0;
+    margin: 320px 15px 15px 15px;
+  }
+  code {
+    margin: 1rem 0;
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=style.css.map */

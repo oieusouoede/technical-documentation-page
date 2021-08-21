@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://img.icons8.com/color/32/000000/python--v1.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Python Docs</title>
+</head>
+<body>
+    <nav id="navbar">
+        <header>Documentação Python</header>
+        <ul>
+            <li><a class="nav-link" href="#A_linguagem_Python">A linguagem Python</a></li>
+            <li><a class="nav-link" href="#O_interpretador_Python">O interpretador Python</a></li>
+            <li><a class="nav-link" href="#Primeiros_passos">Primeiros passos</a></li>
+            <li><a class="nav-link" href="#Variáveis">Variáveis</a></li>
+            <li><a class="nav-link" href="#Tipos_de_dados">Tipos de dados</a></li>
+            <li><a class="nav-link" href="#Listas">Listas</a></li>
+            <li><a class="nav-link" href="#Operadores_aritméticos">Operadores aritméticos</a></li>
+            <li><a class="nav-link" href="#Operadores_de_comparação">Operadores de comparação</a></li>
+            <li><a class="nav-link" href="#Operadores_lógicos">Operadores lógicos</a></li>
+            <li><a class="nav-link" href="#Estrutura_if/else">Estrutura if/else</a></li>
+            <li><a class="nav-link" href="#Estrutura_while">Estrutura while</a></li>
+            <li><a class="nav-link" href="#Estrutura_for">Estrutura for</a></li>
+            <li><a class="nav-link" href="#funções">Funções</a></li>
+            <li><a class="nav-link" href="#Referências">Referências</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+        <section class="main-section" id="A_linguagem_Python">
+            <header>A linguagem Python</header>
+            <article>
+                <p>
+                Python é uma linguagem fácil de aprender e poderosa. Ela tem estruturas de dados de 
+                alto nível eficientes e uma abordagem simples mas efetiva de programação orientada a 
+                objetos. A elegância de sintaxe e a tipagem dinâmica de Python aliadas com sua natureza 
+                interpretativa, o fazem a linguagem ideal para programas e desenvolvimento de aplicações 
+                rápidas em diversas áreas e na maioria das plataformas. O interpretador Python e a extensiva 
+                biblioteca padrão estão disponíveis gratuitamente em código ou na forma binária para toda as 
+                maiores plataformas no <a href="https://www.python.org/endereço">eletrônico do Python</a>, e 
+                pode ser livremente distribuído. O mesmo endereço contém distribuições de diversos módulos, 
+                programas e ferramentas gratuitos produzidos por terceiros e documentação adicional.
+                </p>
+                <p>
+                Este tutorial introduz informalmente o leitor aos conceitos básicos e aos recursos da 
+                linguagem e do sistema Python.
+                </p>
+            </article>
+        </section>
+        <section class="main-section" id="O_interpretador_Python">
+            <header>O interpretador Python</header>
+            <article>
+                <p>
+                O interpretador Python é frequentemente instalado como /usr/local/bin/python3.9 nas máquinas 
+                onde está disponível; adicionando /usr/local/bin ao caminho de busca da shell de seu Unix torna-se 
+                possível iniciá-lo digitando o comando:
+                </p>
+                <code><span class="bash-stuff">$</span> python3.9</code>
+                <p>
+                Considerando que a escolha do diretório onde o interpretador está é uma opção de instalação, outros 
+                locais são possíveis; verifique com seu guru local de Python ou administrador do sistema local. (Por 
+                exemplo, /usr/local/python é um local alternativo popular.)
+                </p>
+                <p>
+                Ao invocar o Python, você pode especificar qualquer uma destas opções:
+                </p>
+                <code><span class="bash-stuff">$</span> python [-bBdEhiIOqsSuvVWx?] [-c command | -m module-name | script | - ] [args]</code>
+                <p>
+                O caso de uso mais comum é, obviamente, uma simples invocação de um script:
+                </p>
+                <code><span class="bash-stuff">$</span> python myscript.py</code>
+                <p>
+                Quando os comandos são lidos a partir do console, diz-se que o interpretador está em modo interativo. 
+                Nesse modo ele solicita um próximo comando através do prompt primário, tipicamente três sinais de maior 
+                (>>>); para linhas de continuação do comando atual, o prompt secundário padrão é formado por três pontos 
+                (...). O interpretador exibe uma mensagem de boas vindas, informando seu número de versão e um aviso de 
+                copyright antes de exibir o primeiro prompt:
+                </p>
+                <code><span class="bash-stuff">$</span> python3.9
+                Python 3.9 (default, June 4 2019, 09:25:04)
+                [GCC 4.8.2] on linux
+                Type "help", "copyright", "credits" or "license" for more information.
+                <span class="bash-stuff">>>></span>
+                </code>
+                <p>
+                Linhas de continuação são necessárias em construções multi-linha. Como exemplo, dê uma olhada nesse comando if:
+                </p>
+                <code><span class="bash-stuff">>>></span> a_terra_e_plana = True
+                <span class="bash-stuff">>>></span> if a_terra_e_plana:
+                <span class="bash-stuff">...</span> print("Vai se tratar!")
+                <span class="bash-stuff">...</span>
+                Vai se tratar!
+                </code>
+                <p>
+                Para sair do modo interativo basta entrar com o comando:
+                </p>
+                <code><span class="bash-stuff">>>></span> quit()</code>
+            </article>
+            </section>
+        <section class="main-section" id="Primeiros_passos">
+            <header>Primeiros passos</header>
+            <article>
+                <h2>Endentação</h2>
+                <p>
+                Em Python, blocos de código são delimitados por espaços ou tabulações formando uma endentação visual; não 
+                existem símbolos de “abre” e “fecha” trecho de código (como os famosos ; do C e do PHP). O Python requer 
+                uma endentação padronizada. Ao se usar um editor de texto comum, é fácil haver erros de endentação, sendo 
+                conveniente configurar o editor para a endentação do Python. As IDEs que suportam Python têm, em geral, a 
+                função de endentação automática. 
+                </p>
+                <ul>
+                  <li>Endentação correta:</li>
+                  <code><span class="bash-stuff">>>></span> def valor1(self):
+                  <span class="bash-stuff">...</span> &nbsp;&nbsp;try:
+                  <span class="bash-stuff">...</span> &nbsp;&nbsp;&nbsp;&nbsp;self.c = input('Primeiro Valor: ')
+                  <span class="bash-stuff">...</span> &nbsp;&nbsp;&nbsp;&nbsp;c = self.c
+                  <span class="bash-stuff">...</span> &nbsp;&nbsp;&nbsp;&nbsp;return c
+                  <span class="bash-stuff">...</span> &nbsp;&nbsp;except:
+                  <span class="bash-stuff">...</span> &nbsp;&nbsp;&nbsp;&nbsp;print 'Inválido!'
+                  <span class="bash-stuff">...</span> &nbsp;&nbsp;&nbsp;&nbsp;self.valor1()
+                  </code>
+                  <li>Endentação incorreta:</li>
+                  <code><span class="bash-stuff">>>></span> def valor1(self):
+                  <span class="bash-stuff">...</span> try:
+                  <span class="bash-stuff">...</span> self.c = input('Primeiro Valor: ')
+                  <span class="bash-stuff">...</span> c = self.c
+                  <span class="bash-stuff">...</span> return c
+                  <span class="bash-stuff">...</span> except:
+                  <span class="bash-stuff">...</span> print 'Inválido!'
+                  <span class="bash-stuff">...</span> self.valor1()
+                  </code>
+                </ul>
+                <p>
+                O código em si está correto para os dois exemplos, mas o analisador léxico irá verificar se, em cada bloco, 
+                a endentação e a exdentação estão coerentes. O analisador reconhecerá as diversas palavras-chave e verificará 
+                se os blocos estão endentados de acordo com o necessário. 
+                </p>
+                <h2>Comentários</h2>
+                <p>
+                Nos exemplos seguintes, pode-se distinguir entrada e saída pela presença ou ausência dos prompts (>>> e …): 
+                para repetir o exemplo, você deve digitar tudo após o prompt, quando o mesmo aparece; linhas que não começarem 
+                com um prompt são na verdade as saídas geradas pelo interpretador. Observe que quando aparece uma linha contendo 
+                apenas o prompt secundário você deve digitar uma linha em branco; é assim que se encerra um comando de múltiplas 
+                linhas.
+                </p>
+                <p>
+                Muitos exemplos neste manual, mesmo aqueles inscritos na linha de comando interativa, incluem comentários. 
+                Comentários em Python começam com o caractere cerquilha ‘#’ e estende até o final da linha. Um comentário pode 
+                aparecer no inicio da linha ou após espaço em branco ou código, mas não dentro de uma string literal. O caracterer 
+                cerquilha dentro de uma string literal é apenas uma cerquilha. Como os comentários são para esclarecer o código e 
+                não são interpretados pelo Python, eles podem ser omitidos ao digitar exemplos.
+                </p>
+                <p>
+                Alguns exemplos:
+                </p>
+                <code># this is the first comment
+                spam = 1  # and this is the second comment
+                # ... and now a third!
+                text = "# This is not a comment because it's inside quotes."
+                </code>
+                <p>
+                Com isso fora do caminho, experimente escrever sua primeira linha de código em Python para imprimir uma saudação
+                na tela. Para isso, utilize a função print() conforme o exemplo abaixo:
+                </p>
+                <code><span class="bash-stuff">>>></span> texto = "Alô mundo!"
+                <span class="bash-stuff">...</span> print(texto)
+                </code>
+                <p>
+                Repare que na chamada da função print() passamos a palavra "texto", ao invés de escrever a frase a ser apresentada. 
+                Para este exemplo, utilizamos a palavra "texto" como uma variável e armazenamos a frase dentro dela. Veja mais sobre
+                variáveis na próxima seção. 
+                </p>
+            </article>
+        </section>
+        <section class="main-section" id="Variáveis">
+            <header>Variáveis</header>
+            <article>
+                <p>
+                Variáveis são palavras que reservamos na programação do nosso código para armazenar e trabalhar com valores. Variáveis 
+                não precisam ser declaradas, mas precisam ser iniciadas antes de serem utilizadas. O nome das variáveis tem que começar 
+                com uma letra, não podendo ser espaço e são case sensitive (diferenciam maiúsculas de minúsculas). As variáveis não têm 
+                valores fixos, podem receber qualquer tipo de dado como números, strings, funções, classes, etc; recebendo o tipo do 
+                conteúdo atual. E também existem os identificadores reservados que são próprios da linguagem. <a href="https://pt.wikiversity.org/wiki/Introdu%C3%A7%C3%A3o_ao_Python/Vari%C3%A1veis_e_coment%C3%A1rios
+                ">Veja mais</a>.
+                </p>
+                <p>
+                Para atribuir um valor à uma variável, utilizamos o operador de atribuição '=', conforme o exemplo abaixo: 
+                </p>
+                <code><span class="bash-stuff">>>></span> a = "um valor qualquer"
+                <span class="bash-stuff">...</span> print(a)
+                um valor qualquer
+                </code>
+                <p>
+                Se uma variável não é “definida” (não tem um valor atribuído), tentar utilizá-la gerará um erro:
+                </p>
+                <code><span class="bash-stuff">>>></span> print(n)
+                Traceback (most recent call last):
+                File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+                NameError: name 'n' is not defined
+                </code>
+            </article>
+        </section>
+        <section class="main-section" id="Tipos_de_dados">
+            <header>Tipos de dados</header>
+            <article>
+                <p>
+                Python é uma linguagem de tipos dinâmicos, ou seja, não é necessário fazer casting como em Java, Pascal ou C.
+                O conceito de variável é uma associação entre um nome e um valor, mas não é necessário declarar o tipo da 
+                variável, portanto, o tipo relacionado à variável pode variar durante a execução do programa, o que implica 
+                em muitos aspectos o uso da linguagem. 
+                </p>
+                <p>
+                Existem 4 tipos numéricos: 
+                </p>
+                <ul>
+                    <li>inteiro (int)</li>
+                    <li>ponto flutuante (float)</li>
+                    <li>booleano (bool)</li>
+                    <li>complexo (complex)</li>
+                </ul>
+                <p>
+                Suportam adição, subtração, multiplicação e divisão e também podem se relacionar.     
+                </p>
+                <p>
+                Existe também o seguinte tipo: 
+                </p>
+                <ul>
+                    <li>string (str)</li>
+                </ul>
+                <p>
+                Mesmo os tipos não sendo declarados explicitamente, eles sempre irão assumir um tipo de dado. Abaixo, exemplos de retornos de tipos: 
+                </p>
+                <h2>Tipos numéricos</h2>
+                <ul>
+                    <li>Tipo inteiro:</li>
+                    <code><span class="bash-stuff">>>></span> a = 1
+                    <span class="bash-stuff">>>></span> type(a)
+                    &lt;type 'int'&gt;
+                    </code>
+                    <li>Tipo ponto flutuante:</li>
+                    <code><span class="bash-stuff">>>></span> a = 1.0
+                    <span class="bash-stuff">>>></span> type(a)
+                    &lt;type 'float'&gt;
+                    </code>
+                    <li>Tipo booleano:</li>
+                    <code><span class="bash-stuff">>>></span> a = True
+                    <span class="bash-stuff">>>></span> type(a)
+                    &lt;type 'bool'&gt;
+                    </code>
+                    <li>Tipo complexo:</li>
+                    <code><span class="bash-stuff">>>></span> a = 4+3j
+                    <span class="bash-stuff">>>></span> type(a)
+                    &lt;type 'complex'&gt;
+                    </code>
+                </ul>
+                <p>
+                Os tipos de dados no Python mudam dinamicamente (exceto os de tipo lista) por exemplo, a variável a:
+                </p>
+                <code><span class="bash-stuff">>>></span> a = 1
+                <span class="bash-stuff">>>></span> type(a)
+                &lt;type 'int'&gt;
+                <span class="bash-stuff">>>></span> a = 1.0
+                <span class="bash-stuff">>>></span> type(a)
+                &lt;type 'float'&gt;
+                </code>
+                <h2>Tipo string</h2>
+                <p>
+                O tipo String é usado principalmente para gravar informações de texto, como o nome de uma pessoa ou uma marca de roupas, 
+                por exemplo. Nele temos uma sequência de caracteres que formam uma string. O Python permite formar strings com um par de 
+                aspas simples ou duplas.
+                </p>
+                <ul>
+                  <li>Tipo string:</li>
+                  <code><span class="bash-stuff">>>></span> a = "abc"
+                  <span class="bash-stuff">>>></span> type(a)
+                  &lt;type 'str'&gt;
+                  </code>
+                </ul>
+                <h2>Concatenação de strings</h2>
+                <p>
+                Há casos em que é necessário juntar informações textuais e para esses denominamos concatenação, que é a junção do conteúdo 
+                de strings. Vamos fazer um exemplo no qual podemos ver como isso ocorre na prática:
+                </p>
+                <code><span class="bash-stuff">>>></span> nome = "Walter"
+                <span class="bash-stuff">>>></span> sobrenome = "Benjamin"
+                <span class="bash-stuff">>>></span> nome_completo = nome + ' ' + sobrenome
+                <span class="bash-stuff">>>></span> print(nome_completo)
+                Walter Benjamin
+                </code>
+            </article>
+        </section>
+        <section class="main-section" id="Listas">
+          <header>Listas</header>
+          <article>
+            <p>
+            Uma lista é uma estrutura de dados composta por itens organizados de forma linear, na qual cada um pode ser acessado a 
+            partir de um índice, que representa sua posição na coleção (iniciando em zero).
+            </p>
+            <p>
+            Em Python, uma lista é representada como uma sequência de objetos separados por vírgula e dentro de colchetes [], assim, 
+            uma lista vazia, por exemplo, pode ser representada por colchetes sem nenhum conteúdo. As possibilidades de declaração e 
+            atribuição de valores a uma lista são várias, e a opção por uma ou outra dependerá do contexto e aplicação. Veja alguns 
+            exemplos de declaração de listas:
+            </p>
+            <code><span class="bash-stuff">>>></span> lista = []
+            <span class="bash-stuff">>>></span> lista
+            []
+            <span class="bash-stuff">>>></span> lista = ['O carro','peixe',123,111]
+            <span class="bash-stuff">>>></span> lista
+            ['O carro', 'peixe', 123, 111]
+            <span class="bash-stuff">>>></span> nova_lista = ['pedra',lista]
+            <span class="bash-stuff">>>></span> nova_lista
+            ['pedra', ['O carro', 'peixe', 123, 111]]
+            </code>
+            <p>
+            As listas, como fica evidente, aceitam diferentes tipos de dados, incluindo outras listas. A linguagem Python dispõe de 
+            vários métodos e operadores para auxiliar na manipulação de listas. O primeiro e mais básico é o operador de acesso aos 
+            seus itens a partir dos índices. O índice de uma lista começa do 0 e é incrementado a cada elemento que é adicionado à ela.
+            Uma lista com uma lista dentro é considerada uma lista bidimensional. Para acessar um elemento de uma lista que está dentro 
+            de outra lista, utilizamos um segundo par de [] com o índice do elemento a ser acessado na lista interna. Veja mais exemplos 
+            considerando as listas criadas anteriormente:
+            </p>
+            <code><span class="bash-stuff">>>></span> lista[0]
+            'O carro'
+            <span class="bash-stuff">>>></span> lista[2]
+            123
+            <span class="bash-stuff">>>></span> nova_lista[0]
+            'pedra'
+            <span class="bash-stuff">>>></span> nova_lista[1]
+            ['O carro azul', 'peixe', 123, 111]
+            <span class="bash-stuff">>>></span> nova_lista[1][2]
+            123
+            </code>
+            <p>
+            O comprimento de uma lista, ou o número de itens que a compõem, pode ser obtido a partir da função len():
+            </p>
+            <code><span class="bash-stuff">>>></span> len(nova_lista)
+            2
+            </code>
+            <p>
+            Também é possível concatenar listas por meio do operador de adição + e multiplicá-las por um inteiro, o que 
+            gerará várias cópias dos seus itens. O código a seguir traz alguns exemplos dessas operações:
+            </p>
+            <code><span class="bash-stuff">>>></span> lista+nova_lista
+            ['O carro azul', 'peixe', 123, 111, 'pedra', ['O carro azul', 'peixe', 123, 111]]
+            <span class="bash-stuff">>>></span> lista*3
+            ['O carro azul', 'peixe', 123, 111, 'O carro azul', 'peixe', 123, 111, 'O carro azul', 'peixe', 123, 111]
+            </code>
+            <p>
+            Em alguns casos é preciso verificar se um determinado valor está contido em uma lista. Para isso, em Python 
+            utilizamos o operador in, que indicará True se objeto pertencer ao conjunto, e False caso contrário. No código 
+            a seguir temos exemplos de uso desse operador:
+            </p>
+            <code><span class="bash-stuff">>>></span> 'peixe' in lista
+            True
+            <span class="bash-stuff">>>></span> 'gato' in lista
+            False
+            </code>
+            <p>
+            O Python oferece ainda as funções min(), max() e sum(), através das quais é possível encontrar, respectivamente, 
+            o menor valor, o maior valor ou ainda realizar a soma de todos os elementos da lista:
+            </p>
+            <code><span class="bash-stuff">>>></span> numeros = [14.55, 67, 89.88, 10, 21.5]
+            <span class="bash-stuff">>>></span> min(numeros)
+            10
+            <span class="bash-stuff">>>></span> max(numeros)
+            89.88
+            <span class="bash-stuff">>>></span> sum(numeros)
+            202.93
+            </code>
+            <p>
+            A partir de agora veremos métodos pertencentes ao tipo lista, e que nos permitem incluir ou remover elementos, 
+            bem como classificar as coleções. O primeiro método a ser analisado é o append(), que tem por objetivo adicionar 
+            um novo elemento no final da lista, conforme mostra o código abaixo: 
+            </p>
+            <code><span class="bash-stuff">>>></span> livros = ['Java','SqlServer', 'Delphi','Python']
+            <span class="bash-stuff">>>></span> livros.append('Android')
+            <span class="bash-stuff">>>></span> livros
+            ['Java', 'SqlServer', 'Delphi', 'Python', 'Android']
+            </code>
+            <p>
+            Caso desejemos fazer essa inserção em uma posição específica, podemos utilizar o método insert() que, além do elemento 
+            a ser inserido, recebe também o índice que ele deve assumir, como mostra o código abaixo:
+            </p>
+            <code><span class="bash-stuff">>>></span> livros = ['Java', 'SqlServer', 'Delphi', 'Python', 'Android']
+            <span class="bash-stuff">>>></span> livros.insert(0,'Oracle')
+            <span class="bash-stuff">>>></span> livros
+            ['Oracle', 'Java', 'SqlServer', 'Delphi', 'Python', 'Android']
+            </code>
+            <p>
+            O próximo método importante é o pop(), que remove o último item da lista e o retorna como resultado da operação. Caso seja 
+            necessário remover um índice específico, basta informá-lo como argumento:
+            </p>
+            <code><span class="bash-stuff">>>></span> livros
+            ['Java', 'SqlServer', 'Delphi', 'Python', 'Android']
+            <span class="bash-stuff">>>></span> livros.pop()
+            'Android'
+            <span class="bash-stuff">>>></span> livros.pop(1)
+            'SqlServer'
+            <span class="bash-stuff">>>></span> livros
+            ['Java', 'Python', 'Delphi']
+            </code>
+            <p>
+            Nos dois casos, a remoção foi feita com base na posição do objeto, porém, há situações em que esse índice é desconhecido e 
+            desejamos remover o item a partir do seu valor. Para isso temos o método remove(item) que remove a primeira ocorrência do 
+            item passado como parâmetro:
+            </p>
+            <code><span class="bash-stuff">>>></span> livros
+            ['Oracle', 'Java', 'SqlServer', 'Delphi', 'Python', 'Android', 'Oracle']
+            <span class="bash-stuff">>>></span> livros.remove('Oracle')
+            <span class="bash-stuff">>>></span> livros
+            ['Java', 'SqlServer', 'Delphi', 'Python', 'Android', 'Oracle']
+            <span class="bash-stuff">>>></span> livros.remove('Oracle')
+            <span class="bash-stuff">>>></span> livros
+            ['Java', 'SqlServer', 'Delphi', 'Python', 'Android']
+            <span class="bash-stuff">>>></span> livros.remove('Oracle')
+            Traceback (most recent call last):
+            &nbsp;File "&lt;pyshell#34&gt;", line 1, in &lt;module&gt;
+            &nbsp;&nbsp;livros.remove('Oracle')
+            ValueError: list.remove(x): x not in list
+            </code>
+            <p>
+            Outros métodos muito importantes ao trabalhar com listas são o sort(), que ordena a lista, e o reverse(), 
+            que inverte as posições dos itens. No caso da ordenação, ela será feita em ordem crescente para números 
+            e em ordem alfabética para strings:
+            </p>
+            <code><span class="bash-stuff">>>></span> livros
+            ['Java', 'SqlServer', 'Delphi', 'Python', 'Android']
+            <span class="bash-stuff">>>></span> livros.reverse()
+            <span class="bash-stuff">>>></span> livros
+            ['Android', 'Python', 'Delphi', 'SqlServer', 'Java']
+            <span class="bash-stuff">>>></span> livros.sort()
+            <span class="bash-stuff">>>></span> livros
+            ['Android', 'Delphi', 'Java', 'Python', 'SqlServer']
+            </code>
+            <p>
+            Por fim, temos ainda o método count(), que retorna o número de ocorrências de determinado objeto, passado 
+            como parâmetro, em uma lista. 
+            </p>
+            <code><span class="bash-stuff">>>></span> livros = ['Oracle', 'Java', 'SqlServer', 'Delphi', 'Python', 'Android', 'Oracle']
+            <span class="bash-stuff">>>></span> livros.count('Python')
+            1
+            <span class="bash-stuff">>>></span> livros.count('Oracle')
+            2
+            </code>
+          </article>
+        </section>
+        <section class="main-section" id="Operadores_aritméticos">
+            <header>Operadores aritméticos</header>
+            <article>
+                <p>
+                Os operadores aritméticos são os sinais utilizados pra realizar operações matemáticas como Python (ou qualquer outra linguagem de programação). 
+                A sintaxe de expressões é a usual: operadores +, -, * e / funcionam da mesma forma que em outras linguagens tradicionais (por exemplo, Pascal 
+                ou C); parênteses (()) podem ser usados para agrupar expressões. Por exemplo:
+                </p>
+                <code><span class="bash-stuff">>>></span> 2 + 2
+                4
+                <span class="bash-stuff">>>></span> 50 + 5 * 6
+                20
+                <span class="bash-stuff">>>></span> (50 - 5 * 6) / 4
+                5.0
+                <span class="bash-stuff">>>></span> 8 / 5 # divisão sempre retorna ponto flutuante
+                1.6
+                </code>
+                <p>
+                Os números inteiros (ex. 2, 4, 20) são do tipo int, aqueles com parte fracionária (ex. 5.0, 1.6) são do tipo float. Veremos mais sobre tipos 
+                numéricos posteriormente neste tutorial.
+                </p>
+                <p>
+                Divisão (/) sempre retorna ponto flutuante (float). Para fazer uma divisão pelo piso e receber um inteiro como resultado (descartando a parte 
+                fracionária) você pode usar o operador //; para calcular o resto você pode usar o %:
+                </p>
+                <code><span class="bash-stuff">>>></span> 17 / 3 # divisão normal retorna um float
+                5.666666666666667
+                <span class="bash-stuff">>>></span> 17 // 3 # descarta a parte fracionária do resultado arredondando pra baixo
+                5
+                <span class="bash-stuff">>>></span> 17 % 3 # o operador módulo retorna o resto da divisão
+                2
+                </code>
+                <p>
+                Com Python, é possível usar o operador ** para calcular potências:
+                </p>
+                <code><span class="bash-stuff">>>></span> 5 ** 2 # 5 ao quadrado
+                25
+                <span class="bash-stuff">>>></span> 2 ** 7 # 2 elevado a 7
+                128
+                </code>
+            </article>
+          </section>
+        <section class="main-section" id="Operadores_de_comparação">
+          <header>Operadores de comparação</header>
+          <article>
+            <p>
+            Os operadores de comparação nos permitem comparar valores. Uma comparação 
+            entre valores nos retorna um valor booleano (verdadeiro ou falso). Os resultados 
+            dessas comparações servem, portanto para controlar o fluxo de execução do nosso 
+            código. Os operadores são:
+            </p>
+            <ul>
+              <li>O operador &gt; (maior que) verifica se um valor é maior que o outro:</li>
+              <code><span class="bash-stuff">>>></span> a = 2
+              <span class="bash-stuff">>>></span> b = 3
+              <span class="bash-stuff">>>></span> print(a &gt; b)
+              False
+              </code>
+              <li>O operador &lt; (menor que) verifica se um valor é menor que o outro:</li>
+              <code><span class="bash-stuff">>>></span> a = 2
+              <span class="bash-stuff">>>></span> b = 3
+              <span class="bash-stuff">>>></span> print(a &lt; b)
+              True
+              </code>
+              <li>O operador &gt;= (maior ou igual a). Neste caso, mesmo se o valor não for maior 
+              ele também retorna true se o valor for igual:</li>
+              <code><span class="bash-stuff">>>></span> a = 2
+              <span class="bash-stuff">>>></span> b = 2
+              <span class="bash-stuff">>>></span> print(a &gt;= b)
+              True
+              </code>
+              <li>O operador &lt;= (menor ou igual a). Da mesma forma, mesmo se o valor não for menor 
+              ele retorna true se o valor for igual:</li>
+              <code><span class="bash-stuff">>>></span> a = 3
+              <span class="bash-stuff">>>></span> b = 3
+              <span class="bash-stuff">>>></span> print(a &lt;= b)
+              True
+              </code>
+              <li>O operador == (igual a) verifica se um valor é igual ao outro:</li>
+              <code><span class="bash-stuff">>>></span> a = 2
+              <span class="bash-stuff">>>></span> b = 3
+              <span class="bash-stuff">>>></span> print(a == b)
+              False
+              </code>
+              <li>O operador != (diferente de) verifica se um valor é diferente do outro:</li>
+              <code><span class="bash-stuff">>>></span> a = 2
+              <span class="bash-stuff">>>></span> b = 3
+              <span class="bash-stuff">>>></span> print(a != b)
+              True
+              </code>
+            </ul>
+            <p>
+            Quando determinamos que uma ou mais linhas de código deve ser executada dependendo 
+            do resultado de uma comparação, dizemos que isso é uma estrutura condicional. Veremos 
+            os tipos de estruturas condicionais mais adiante. Mas antes vamos ver como podemos criar 
+            expressões condicionais com mais de uma comparação. 
+            </p>
+          </article>
+        </section>
+        <section class="main-section" id="Operadores_lógicos">
+          <header>Operadores lógicos</header>
+          <article>
+            <p>
+            Operadores lógicos são usados para montar expressões condicionais contendo duas ou mais 
+            comparações. O retorno continua sendo um valor booleano (True ou False), mas neste caso 
+            o valor de retorno depende do operador lógico utilizado e do resultado indivual de cada 
+            comparação.
+            </p>
+            <ul>
+              <li>Operador and. Retorna true se todas as comparações realizadas retornarem True. Do 
+              contrário ele retorna False.</li>
+              <code><span class="bash-stuff">>>></span> a = 2
+              <span class="bash-stuff">>>></span> print(a > 0 and a == 2)
+              True
+              </code>
+              <li>Operador or. Retorna true se ao menos uma das comparações retornar True. Se nenhuma 
+              retornar, ele retorna False.</li>
+              <code><span class="bash-stuff">>>></span> a = 2
+              <span class="bash-stuff">>>></span> print(a > 0 or a == 5)
+              True
+              </code>
+              <li>Operador not. Este operador inverte o resultado de uma comparação ou de uma expressão 
+              lógica.</li>
+              <code><span class="bash-stuff">>>></span> a = 2
+              <span class="bash-stuff">>>></span> print(not(a > 0 and a == 2))
+              False
+              </code>
+            </ul>
+          </article>
+        </section>
+        <section class="main-section" id="Estrutura_if/else">
+          <header>Estrutura if/else</header>
+          <article>
+            <p>
+            Existem algumas estruturas que podemos usar pra controlar o fluxo de execução 
+            dos nossos programas. A primeira que veremos é o comando if/else. O conceito é 
+            bem simples: Se uma condição retornar True, ele executa um determinado bloco de 
+            de código. Opcionalmente podemos determinar outro trecho de código pra ser executado 
+            caso a condição não seja atendida utilizando o comando else. Se quisermos ainda 
+            colocar uma segunda estrura condicional caso a primeira retorne False utilizamos 
+            o comando elif. Veja o exemplo abaixo:
+            </p>
+            <code><span class="bash-stuff">>>></span> a = 2
+            <span class="bash-stuff">>>></span> if a &lt; 2:
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;print("Menor que 2")
+            <span class="bash-stuff">...</span> elif a &gt; 2:
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;print("Maior que 2")
+            <span class="bash-stuff">...</span> else:
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;print("Igual a 2")
+            <span class="bash-stuff">...</span>
+            Igual a 2
+            </code>
+          </article>
+        </section>
+        <section class="main-section" id="Estrutura_while">
+          <header>Estrutura while</header>
+          <article>
+            <p>
+            Outra forma de controla o fluxo de execução é utilizando a estrutura while. No 
+            caso so while, um determinado bloco de código será executado enquanto uma comparação
+            ou estrutura condicional não for atendida.
+            </p> 
+            <code><span class="bash-stuff">>>></span> a = 0
+            <span class="bash-stuff">>>></span> while a &lt;= 10: # Deverá executar enquanto a for menor ou igual a 10
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;print(a)
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;a = a + 1
+            <span class="bash-stuff">...</span>
+            0
+            1
+            2
+            3
+            4
+            5
+            6
+            7
+            8
+            9
+            10
+            </code>
+            <p>
+            Repare que dentro do bloco a ser executado há um comando para adicionar 1 ao valor de a. 
+            Se não houver a possibilidade de que a condição seja satisfeita o programa irá rodar 
+            infinitamente.
+            </p>
+          </article>
+        </section>
+        <section class="main-section" id="Estrutura_for">
+          <header>Estrutura for</header>
+          <article>
+            <p>
+            O comando for em Python é um pouco diferente do que costuma ser em C ou Pascal. 
+            Ao invés de sempre iterar sobre uma progressão aritmética de números (como no Pascal), 
+            ou permitir ao usuário definir o passo de iteração e a condição de parada (como C), o 
+            comando for do Python itera sobre os itens de qualquer sequência (seja uma lista ou uma 
+            string), na ordem que aparecem na sequência. Por exemplo:
+            </p>
+            <code><span class="bash-stuff">>>></span> >>> # Tamanho das palavras:
+            <span class="bash-stuff">...</span> words = ['gato', 'janela', 'defenestrar']
+            <span class="bash-stuff">>>></span> for w in words:
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;print(w, len(w))
+            <span class="bash-stuff">...</span>
+            gato 4
+            janela 6
+            defenestrar 11
+            </code>
+            <p>
+            Código que modifica uma coleção sobre a qual está iterando pode ser inseguro. No lugar 
+            disso, usualmente você deve iterar sobre uma cópia da coleção ou criar uma nova coleção.
+            </p>
+            <p>Iterando sobre uma cópia:</p>
+            <code><span class="bash-stuff">>>></span> # Estratégia:  Iterar sobre uma cópia
+            <span class="bash-stuff">...</span> for user, status in users.copy().items():
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;if status == 'inactive':
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;&nbsp;&nbsp;del users[user]
+            </code>
+            <p>Criando uma nova lista:</p>
+            <code><span class="bash-stuff">>>></span> # Estratégia: Criar uma nova lista
+            <span class="bash-stuff">...</span> active_users = {}
+            <span class="bash-stuff">...</span> for user, status in users.items():
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;if status == 'active':
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;&nbsp;&nbsp;active_users[user] = status
+            </code>
+            <p>
+              Se você precisa iterar sobre sequências numéricas, a função embutida range() é a resposta. 
+              Ela gera progressões aritméticas:
+            </p>
+            <code><span class="bash-stuff">>>></span> for i in range(5):
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;print(i)
+            <span class="bash-stuff">...</span>
+            0
+            1
+            2
+            3
+            4
+            </code>
+            <p>
+            O ponto de parada fornecido nunca é incluído na lista; range(10) gera uma lista com 10 valores, 
+            exatamente os índices válidos para uma sequência de comprimento 10. É possível iniciar o intervalo 
+            com outro número, ou alterar a razão da progressão (inclusive com passo negativo):
+            </p>
+            <code><span class="bash-stuff">>>></span> a = ['Mary', 'had', 'a', 'little', 'lamb']
+            <span class="bash-stuff">>>></span> for i in range(len(a)):
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;print(i, a[i])
+            <span class="bash-stuff">...</span> 
+            0 Mary
+            1 had
+            2 a
+            3 little
+            4 lamb
+            </code>
+            <p>
+            Uma coisa estranha acontece se você imprime um intervalo:
+            </p>
+            <code><span class="bash-stuff">>>></span> range(10)
+            range(0, 10)
+            </code>
+            <p>
+            Em muitos aspectos, o objeto retornado pela função range() se comporta como se fosse uma lista, mas na 
+            verdade não é. É um objeto que retorna os itens sucessivos da sequência desejada quando você itera sobre 
+            a mesma, mas na verdade ele não gera a lista, economizando espaço.
+            </p>
+            <p>
+            Dizemos que um objeto é iterável, isso é, candidato a ser alvo de uma função ou construção que espera 
+            alguma coisa capaz de retornar sucessivamente seus elementos um de cada vez. Nós vimos que o comando for 
+            é um exemplo de construção, enquanto que um exemplo de função que recebe um iterável é sum():
+            </p>
+            <code><span class="bash-stuff">>>></span> sum(range(4))  # 0 + 1 + 2 + 3
+            6
+            </code> 
+          </article>
+        </section>
+        <section class="main-section" id="funções">
+          <header>Funções</header>
+          <article>
+            <p>
+            Funções são blocos de código com nome e argumentos (algumas funções não possuem argumentos), usadas para 
+            realizar tarefas. Algumas funções já estão presentes no interpretador, como exemplo a usada no cálculo do 
+            seno de um ângulo que está presente na biblioteca math.sin de python. 
+            </p>
+            <code> def NOME (argumento1, argumento2, ...):
+            &nbsp;&nbsp;bloco de código
+            </code>
+            <p>
+            Se a função retorna algum valor (linguagens de programação chamam funções que não retornam valor de subrotinas), 
+            usa-se a instrução "return valor". Exemplo: 
+            </p>
+            <code> def soma(x, y):
+            &nbsp;&nbsp;return x + y
+            </code>
+            <p>
+            Funções podem não ter argumento, neste caso a lista de argumentos será vazia: 
+            </p>
+            <code> def hello():
+            &nbsp;&nbsp;print "Hello, World!"
+            </code>
+            <p>
+            Os argumentos pode vir "nus", ou seguidos de "= valor". No primeiro caso, não passar este argumento 
+            para a função dá erro, no segundo caso, o argumento toma, por default, o valor passado.
+            </p>
+            <p>
+            Um cuidado deve ser tomado: se o valor é variável, ele é determinado no momento da definição da função. 
+            Por exemplo: 
+            </p>
+            <code><span class="bash-stuff">>>></span> indice = 5
+            <span class="bash-stuff">>>></span> def função (argumento = indice):
+            <span class="bash-stuff">...</span> &nbsp;&nbsp;print argumento
+            <span class="bash-stuff">>>></span> indice = 6
+            <span class="bash-stuff">>>></span> função()
+            5
+            <span class="bash-stuff">>>></span> print indice
+            6
+            </code>
+
+            <h2>Funções sem nome - lambda</h2>
+            <p>A vantagem é que podem ser usadas dentro de expressões</p>
+            <code>  f = lambda x: x**x
+            </code>
+            <p>a função acima substitui...</p>
+            <code> def f(x):
+            &nbsp;&nbsp;return x**x
+            </code>
+            <p>Funções lambda podem ser divididas em:</p>
+            <code>  nome variavel: ações
+            </code>
+            <p>
+            Onde nome sempre será 'lambda', variável pode conter uma ou mais variáveis e ações pode ser uma potência ou 
+            referência a uma função matemática tipo:
+            </p>
+            <code>  import math
+            f = lambda x,y : pow(x,y)
+            </code>
+          </article>
+        </section>
+        <section class="main-section" id="Referências">
+          <header>Referências</header>
+          <article>
+                O material de referência elaborado nesta página é uma repodução de trechos da 
+                <a href="https://docs.python.org/pt-br/3/" target="_blank">documentação oficial</a> 
+                do Python, da Introdução ao Python da <a href="https://pt.wikiversity.org/wiki/Introdu%C3%A7%C3%A3o_ao_Python">
+                Wikiversidade</a>, de algumas páginas da <a href="https://www.devmedia.com.br/tipos-de-dados-em-python-string/40669">
+                Devmedia</a> e mais algumas coisinhas que eu escrevi porque fiquei com preguiça de 
+                procurar em outro lugar.
+          </article>
+        </section>
+    </main>
+</body>
+</html>
